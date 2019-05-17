@@ -45,5 +45,6 @@ setup(
         'Topic :: Software Development :: Libraries :: Python Modules',
         'Topic :: Software Development :: Libraries',
     ],
-    tests_require=['pytest', 'flake8'],
+    setup_requires=['pytest-runner'],
+    tests_require=['pytest', 'flake8', 'hypothesis'],
 )

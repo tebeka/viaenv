@@ -1,4 +1,6 @@
 *.egg-info
 *.pyc
+.eggs
+.hypothesis
 __pycache__
 dist

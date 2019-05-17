@@ -36,3 +36,5 @@ print(cfg.timeout == timedelta(milliseconds=300)  # True
 - `str`: Anything goes
 - `time`: `13:43:12`
 - `timedelta`: `10us`, `20ms`, `30s`, `17m`, `2h`, `7d`, `1h20m`
+
+You can add your types by calling 
