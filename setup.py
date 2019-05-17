@@ -30,7 +30,7 @@ setup(
     author_email='miki.tebeka@gmail.com',
     license='BSD',
     url='https://github.com/tebeka/viaenv',
-    packages=['viaenv'],
+    py_modules=['viaenv'],
     classifiers=[
         'Development Status :: 3 - Alpha'
         'Intended Audience :: Developers',
