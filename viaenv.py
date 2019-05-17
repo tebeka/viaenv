@@ -5,6 +5,7 @@ from datetime import date, datetime, time, timedelta
 from os import environ
 
 __version__ = '0.1.0'
+__all__ = ['populate_from_env', 'register_type_parser']
 
 
 def populate_from_env(obj, prefix='', env=None):
@@ -52,7 +53,10 @@ def populate_from_env(obj, prefix='', env=None):
 _type_parsers = {}
 
 
-def add_type_parser(typ, parser):
+def register_type_parser(typ, parser):
+    """Register a parser for type "typ", "parser" should be a function that
+    gets one string value and returned parsed type.
+    """
     # TODO: warn on duplicates
     _type_parsers[typ] = parser
 
@@ -66,7 +70,7 @@ def find_parser(typ):
 
 def type_parser(typ):
     def wrapper(func):
-        add_type_parser(typ, func)
+        register_type_parser(typ, func)
         return func
     return wrapper
 
