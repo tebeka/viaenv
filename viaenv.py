@@ -4,6 +4,8 @@ import re
 from datetime import date, datetime, time, timedelta
 from os import environ
 
+__version__ = '0.1.0'
+
 
 def populate_from_env(obj, prefix='', env=None):
     """Populate values in obj from environment. obj should have
@@ -17,12 +19,13 @@ def populate_from_env(obj, prefix='', env=None):
     ...     timeout: timedelta = timedelta(milliseconds=100)
     ...
     >>> populate_from_env(
-    ...     config, prefix='srv',
+    ...     config, prefix='SRV',
+    ...     # If you don't pass env, populate_from_env will use os.environ
     ...     env={'SRV_PORT': '9000', 'SRV_TIMEOUT': '300ms'})
     >>> config.port
     9000
-    >>> cfg.timeout
-    datetime.timedelta(microseconds=300000)
+    >>> config.timeout == timedelta(milliseconds=300)
+    True
     """
     if not hasattr(obj, '__annotations__'):
         raise ValueError(f'no type annotation in {obj!r} of type')
@@ -68,20 +71,24 @@ def type_parser(typ):
     return wrapper
 
 
+@type_parser(int)
+def parse_int(value):
+    return int(value, 0)  # Allow 10, 0x10, 0o10, 0b10
+
 # TODO: Allow adding/chaning formats
 @type_parser(datetime)
 def parse_datetime(value):
-    return datetime.strptime(value, '%Y-%m-%dT%H%M:%S')
+    return datetime.strptime(value, '%Y-%m-%dT%H:%M:%S')
 
 
 @type_parser(time)
 def parse_time(value):
-    return time.strptime(value, '%H:%M')
+    return time.fromisoformat(value)
 
 
 @type_parser(date)
 def parse_date(value):
-    return date.strptime(value, '%Y-%m-%d')
+    return date.fromisoformat(value)
 
 
 _second = int(1e6)
