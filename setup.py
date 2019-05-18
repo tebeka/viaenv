@@ -26,13 +26,14 @@ setup(
     version=find_version(),
     description='Configuration via environment',
     long_description=long_desc,
+    long_description_content_type='text/markdown',
     author='Miki Tebeka',
     author_email='miki.tebeka@gmail.com',
     license='BSD',
     url='https://github.com/tebeka/viaenv',
     py_modules=['viaenv'],
     classifiers=[
-        'Development Status :: 3 - Alpha'
+        'Development Status :: 3 - Alpha',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: BSD License',
         'Operating System :: POSIX :: Linux',
