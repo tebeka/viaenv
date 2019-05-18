@@ -50,7 +50,12 @@ def populate_from_env(obj, prefix='', env=None):
         setattr(obj, name, value)
 
 
-_type_parsers = {}
+# TODO: Allow adding/changing time formats
+_type_parsers = [
+    (datetime, datetime.fromisoformat),
+    (date, date.fromisoformat),
+    (time, time.fromisoformat),
+]
 
 
 def register_type_parser(typ, parser):
@@ -58,11 +63,11 @@ def register_type_parser(typ, parser):
     gets one string value and returned parsed type.
     """
     # TODO: warn on duplicates
-    _type_parsers[typ] = parser
+    _type_parsers.insert(0, (typ, parser))
 
 
 def find_parser(typ):
-    for cls, func in _type_parsers.items():
+    for cls, func in _type_parsers:
         if issubclass(typ, cls):
             return func
     return typ
@@ -78,21 +83,6 @@ def type_parser(typ):
 @type_parser(int)
 def parse_int(value):
     return int(value, 0)  # Allow 10, 0x10, 0o10, 0b10
-
-# TODO: Allow adding/chaning formats
-@type_parser(datetime)
-def parse_datetime(value):
-    return datetime.strptime(value, '%Y-%m-%dT%H:%M:%S')
-
-
-@type_parser(time)
-def parse_time(value):
-    return time.fromisoformat(value)
-
-
-@type_parser(date)
-def parse_date(value):
-    return date.fromisoformat(value)
 
 
 _second = int(1e6)
