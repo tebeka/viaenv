@@ -6,4 +6,8 @@ test:
 	python -m pytest -v
 
 sdist:
+	rm dist/viaenv-*.tar.gz
 	python setup.py sdist
+
+pypi: sdist
+	twine upload dist/viaenv-*.tar.gz
