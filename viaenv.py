@@ -4,7 +4,7 @@ import re
 from datetime import date, datetime, time, timedelta
 from os import environ
 
-__version__ = '0.1.0'
+__version__ = '0.1.1'
 __all__ = ['populate_from_env', 'register_type_parser']
 
 
