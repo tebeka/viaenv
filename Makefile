@@ -11,3 +11,6 @@ sdist:
 
 pypi: sdist
 	twine upload dist/viaenv-*.tar.gz
+
+circleci:
+	python setup.py test
