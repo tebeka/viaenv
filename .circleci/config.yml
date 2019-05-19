@@ -1,8 +1,8 @@
 version: 2
 jobs:
-  docker:
-      - image: circleci/python:3.7.3-stretch
   build:
+    docker:
+      - image: circleci/python:3.7.3-stretch
     steps:
       - checkout
       - run: make circleci
