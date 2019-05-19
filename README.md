@@ -1,5 +1,9 @@
 # viaenv - Configuration via Environment for Python
 
+[![CircleCI](https://circleci.com/gh/tebeka/viaenv.svg?style=svg)](https://circleci.com/gh/tebeka/viaenv)
+[![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
+
+
 `viaenv` uses [variable annotation](https://www.python.org/dev/peps/pep-0526/)
 to populate values from environment variables.
 
