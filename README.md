@@ -41,4 +41,6 @@ print(cfg.timeout == timedelta(milliseconds=300)  # True
 - `time`: `13:43:12`
 - `timedelta`: `10us`, `20ms`, `30s`, `17m`, `2h`, `7d`, `1h20m`
 
-You can add your types by calling 
+You can add your types by calling `register_type_parser(typ, parser)` where
+`typ` is a type (e.g. `float`) and `parser` is a one argument function that
+will get the value as a string.
