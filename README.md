@@ -21,7 +21,7 @@ class config:
 
 
 populate_from_env(
-    config, prefix='srv',
+    config, prefix='SRV',
     # If you don't pass env, populate_from_env will use os.environ
     env={'SRV_PORT': '9000', 'SRV_TIMEOUT': '300ms'})
 
