@@ -6,7 +6,7 @@ test:
 	python -m pytest -v
 
 sdist:
-	rm dist/viaenv-*.tar.gz
+	rm -f dist/viaenv-*.tar.gz
 	python setup.py sdist
 
 pypi: sdist

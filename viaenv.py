@@ -2,9 +2,10 @@
 import json
 import re
 from datetime import date, datetime, time, timedelta
+from distutils.util import strtobool
 from os import environ
 
-__version__ = '0.1.1'
+__version__ = '0.2.0'
 __all__ = ['populate_from_env', 'register_type_parser']
 
 
@@ -52,9 +53,9 @@ def populate_from_env(obj, prefix='', env=None):
 
 # TODO: Allow adding/changing time formats
 _type_parsers = [
-    (datetime, datetime.fromisoformat),
     (date, date.fromisoformat),
     (time, time.fromisoformat),
+    (datetime, datetime.fromisoformat),
 ]
 
 
@@ -67,6 +68,12 @@ def register_type_parser(typ, parser):
 
 
 def find_parser(typ):
+    # Try exact type first
+    for cls, func in _type_parsers:
+        if cls == typ:
+            return func
+
+    # Try subclass
     for cls, func in _type_parsers:
         if issubclass(typ, cls):
             return func
@@ -122,3 +129,8 @@ def parse_dict(value):
     if not isinstance(dval, dict):
         raise TypeError(f'{value!r} is not a dict')
     return dval
+
+
+@type_parser(bool)
+def parse_bool(value):
+    return bool(strtobool(value))
