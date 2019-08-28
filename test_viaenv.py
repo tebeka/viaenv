@@ -1,7 +1,6 @@
 from datetime import timedelta, datetime, date, time
 
 import pytest
-
 import viaenv
 
 parse_cases = [

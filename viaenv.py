@@ -51,12 +51,7 @@ def populate_from_env(obj, prefix='', env=None):
         setattr(obj, name, value)
 
 
-# TODO: Allow adding/changing time formats
-_type_parsers = [
-    (date, date.fromisoformat),
-    (time, time.fromisoformat),
-    (datetime, datetime.fromisoformat),
-]
+_type_parsers = []
 
 
 def register_type_parser(typ, parser):
@@ -134,3 +129,19 @@ def parse_dict(value):
 @type_parser(bool)
 def parse_bool(value):
     return bool(strtobool(value))
+
+
+# TODO: Allow adding/changing time formats
+@type_parser(date)
+def parse_date(value):
+    return datetime.strptime(value, '%Y-%m-%d').date()
+
+
+@type_parser(time)
+def parse_time(value):
+    return datetime.strptime(value, '%H:%M:%S').time()
+
+
+@type_parser(datetime)
+def parse_datetime(value):
+    return datetime.strptime(value, '%Y-%m-%dT%H:%M:%S')
