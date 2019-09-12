@@ -31,7 +31,8 @@ print(cfg.timeout == timedelta(milliseconds=300)  # True
 
 ## Supported Types
 
-- `bool`: `y`, `yes`, `t`, `true`, `on`, `1` -> `True`, `n`, `no`, `f`, `false`, `off`, `0` -> `False`
+- `bool`: `y`, `yes`, `t`, `true`, `on`, `1` → `True`, `n`, `no`, `f`, `false`,
+  `off`, `0` → `False`
 - `date`: `2019-05-18`
 - `datetime`: `2019-05-18T13:43:12`
 - `dict`: `{"x": 1, "y": 2}` (JSON format)
