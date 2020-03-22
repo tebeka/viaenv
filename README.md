@@ -1,6 +1,6 @@
 # viaenv - Configuration via Environment for Python
 
-![CI](https://github.com/tebeka/viaenv/workflows/viaenv%20CI/badge.svg)
+[![CI](https://github.com/tebeka/viaenv/workflows/viaenv%20CI/badge.svg)](https://github.com/tebeka/viaenv/actions?query=workflow%3A%22viaenv+CI%22)
 [![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
 
 
