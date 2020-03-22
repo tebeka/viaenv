@@ -17,6 +17,15 @@ def find_version():
     assert False, f'cannot find version in {py_file}'
 
 
+def load_dev_requirements():
+    with open('dev-requirements.txt') as fp:
+        for line in fp:
+            line = line.strip()
+            if not line or line[0] == '#':
+                continue
+            yield line
+
+
 with open('README.md') as fp:
     long_desc = fp.read()
 
@@ -47,5 +56,5 @@ setup(
         'Topic :: Software Development :: Libraries',
     ],
     setup_requires=['pytest-runner'],
-    tests_require=['pytest', 'flake8', 'hypothesis'],
+    tests_require=list(load_dev_requirements()),
 )

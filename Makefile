@@ -2,8 +2,10 @@ all:
 	$(error please pick a target)
 
 test:
+	find . -name '*.pyc' -exec rm {} \;
 	flake8 *.py
-	python -m pytest -v
+	bandit viaenv.py
+	python -m pytest --disable-warnings -rf -v
 
 sdist:
 	rm -f dist/viaenv-*.tar.gz

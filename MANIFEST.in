@@ -1,5 +1,4 @@
-include LICENSE.txt
-include Makefile
 include README.md
-include pytest.ini
-include test_viaenv.py
+include Makefile
+include setup.cfg
+include LICENSE.txt
