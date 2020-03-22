@@ -1,4 +1,4 @@
-name: Python package
+name: viaenv CI
 
 on: [push]
 
