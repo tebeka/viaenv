@@ -1,4 +1,5 @@
-include README.md
-include Makefile
-include setup.cfg
 include LICENSE.txt
+include Makefile
+include README.md
+include dev-requirements.txt
+include setup.cfg
