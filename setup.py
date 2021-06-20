@@ -14,7 +14,7 @@ def find_version():
             match = re.search("__version__ = '(.+)'", line)
             if match:
                 return match.group(1)
-    assert False, f'cannot find version in {py_file}'
+    raise ValueError(f'cannot find version in {py_file}')
 
 
 def load_dev_requirements():
