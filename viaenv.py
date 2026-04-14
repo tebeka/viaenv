@@ -2,7 +2,6 @@
 import json
 import re
 from datetime import date, datetime, time, timedelta
-from distutils.util import strtobool
 from os import environ
 
 __version__ = '0.2.1'
@@ -126,9 +125,20 @@ def parse_dict(value):
     return dval
 
 
+_true_vals = {'y', 'yes', 't', 'true', 'on', '1'}
+_false_vals = {'n', 'no', 'f', 'false', 'off', '0'}
+
+
 @type_parser(bool)
 def parse_bool(value):
-    return bool(strtobool(value))
+    val = value.lower()
+    if val in _true_vals:
+        return True
+
+    if val in _false_vals:
+        return False
+
+    raise ValueError(f'invalid bool value {value!r}')
 
 
 # TODO: Allow adding/changing time formats

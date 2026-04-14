@@ -1,9 +1,37 @@
-[build-system]
-requires = [
-    "setuptools>=57",
-    "wheel",
+[project]
+name = 'viaenv'
+version = '0.2.1'
+description = 'Configuration via environment'
+readme = 'README.md'
+license = 'BSD-3-Clause'
+authors = [{name = 'Miki Tebeka', email = 'miki.tebeka@gmail.com'}]
+requires-python = '>=3.12'
+classifiers = [
+    'Development Status :: 3 - Alpha',
+    'Intended Audience :: Developers',
+    'Operating System :: POSIX :: Linux',
+    'Operating System :: Microsoft :: Windows',
+    'Operating System :: MacOS',
+    'Programming Language :: Python :: 3',
+    'Programming Language :: Python',
+    'Topic :: Software Development :: Libraries :: Python Modules',
+    'Topic :: Software Development :: Libraries',
 ]
-build-backend = "setuptools.build_meta"
+
+[dependency-groups]
+dev = [
+    'bandit',
+    'flake8',
+    'hypothesis',
+    'pytest',
+]
+
+[tool.setuptools]
+py-modules = ['viaenv']
+
+[build-system]
+requires = ['setuptools>=57', 'wheel']
+build-backend = 'setuptools.build_meta'
 
 [tool.pytest.ini_options]
-addopts = "-v"
+addopts = '--doctest-modules -v --disable-warnings -rf'
