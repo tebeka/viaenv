@@ -20,10 +20,10 @@ classifiers = [
 
 [dependency-groups]
 dev = [
-    'bandit',
-    'ruff',
-    'hypothesis',
-    'pytest',
+    'bandit ~= 1.9',
+    'ruff ~= 0.15',
+    'hypothesis ~= 6.15',
+    'pytest ~= 9.0',
 ]
 
 [tool.setuptools]
